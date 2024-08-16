@@ -169,8 +169,6 @@ def train_acquirer(args, batch, clip_model, loss_nce, loss_mse, epoch, lang=None
     density_loss=0.
     loss_mu= 0.
     adv_loss = 0.
-    loss_teacher = 0.
-    hisc = RbfHSIC(1)
     batch = [t.cuda() if isinstance(t, torch.Tensor) else t for t in batch]
     if args.stage == 'NLT':
 
@@ -232,7 +230,6 @@ def train_acquirer(args, batch, clip_model, loss_nce, loss_mse, epoch, lang=None
         loss2 = loss_nce(sim_matrix.T)
         loss_itm_nce = (loss1 + loss2) / 2
         
-        #蒸馏损失
         loss_distill = nn.SmoothL1Loss()
         loss_mu = loss_distill(img_feats, sr)  * 0.1
 
