@@ -194,15 +194,14 @@ def train_acquirer(args, batch, clip_model, loss_nce, loss_mse, epoch, lang=None
         
     if args.new_embed:
         if args.m_acquirer:
-             #提取目标语言句子基本情况  
             if args.stage == 'NLT':
                 gold_feats = src_feats.detach()
             else:
                 with torch.no_grad():
                     img_feats = clip_model.encode_image(img).cuda().float().detach()
                 gold_feats = img_feats
-            mu, style_sigma, adv_loss,src_feats_distill = clip_model.encode_text(trg_sents, acquirer=True, tokenize=True, layers=args.kd_layers, lang=lang, zi_bool=True,src_feats=gold_feats,istrain=True)
-            trg_feats = clip_model.encode_text(trg_sents, acquirer=True, tokenize=True, layers=args.kd_layers, lang=lang, mu=mu, style_sigma=style_sigma)
+            sr, sa, adv_loss,src_feats_distill = clip_model.encode_text(trg_sents, acquirer=True, tokenize=True, layers=args.kd_layers, lang=lang, zi_bool=True,src_feats=gold_feats,istrain=True)
+            trg_feats = clip_model.encode_text(trg_sents, acquirer=True, tokenize=True, layers=args.kd_layers, lang=lang, sr=sr, sa=sa)
 
         else:
             trg_feats = clip_model.encode_text(trg_sents, acquirer=True, tokenize=True, layers=args.kd_layers)
@@ -210,12 +209,10 @@ def train_acquirer(args, batch, clip_model, loss_nce, loss_mse, epoch, lang=None
         trg_feats = clip_model.encode_text(clip.tokenize(list(trg_sents), truncate=True).cuda(), acquirer=True, layers=args.kd_layers, lang=lang)
 
     if args.mse:
-        #语义损失
         loss_kd = loss_mse(src_feats, trg_feats, layers=(args.kd_layers is not None and epoch < args.kd_layer_ep))
 
-        #蒸馏损失
         loss_distill = nn.SmoothL1Loss()
-        loss_mu = loss_distill(mu, src_feats) * 0.1
+        loss_mu = loss_distill(sr, src_feats) * 0.1
 
         loss += loss_kd + adv_loss + loss_mu
     if args.nce:
@@ -237,7 +234,7 @@ def train_acquirer(args, batch, clip_model, loss_nce, loss_mse, epoch, lang=None
         
         #蒸馏损失
         loss_distill = nn.SmoothL1Loss()
-        loss_mu = loss_distill(img_feats, mu)  * 0.1
+        loss_mu = loss_distill(img_feats, sr)  * 0.1
 
         loss_kd = loss_mse(src_feats, trg_feats, layers=(args.kd_layers is not None and epoch < args.kd_layer_ep))
         loss += loss_itm_nce + loss_mu + adv_loss + loss_kd

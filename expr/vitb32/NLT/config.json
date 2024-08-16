@@ -2,7 +2,6 @@
 "config": null,
 "output_dir": "expr/vitb32/NLT",
 "batch_size": 128,
-"rootpath":"dataset",
 "data_path":"dataset",
 "n_workers": 4,
 "lr": 2e-4,

@@ -154,10 +154,8 @@ def eval_epoch(clip_model, test_dataloader, device, n_gpu, langs=['en'],
             b = len(images)
             if new_embed:
                 test_lang = None if langs[0].split('_')[0]=='en' else langs[0].split('_')[0]
-                mu,sigma = clip_model.encode_text(list(captions), acquirer=True, tokenize=True, lang=test_lang,zi_bool=True)
-                for mu_value, caption_value in zip(sigma.cpu().numpy(), captions):
-                    visual_json[caption_value] = mu_value.tolist()
-                sequence_output = clip_model.encode_text(list(captions), acquirer=(acquirer and langs[0].split('_')[0]!='en'), tokenize=True, lang=test_lang,mu=mu,style_sigma=sigma).float()
+                sr,sa = clip_model.encode_text(list(captions), acquirer=True, tokenize=True, lang=test_lang,zi_bool=True)
+                sequence_output = clip_model.encode_text(list(captions), acquirer=(acquirer and langs[0].split('_')[0]!='en'), tokenize=True, lang=test_lang,sr=sr,sa=sa).float()
             elif extra_embed:
                 sequence_output = clip_model.encode_text(list(captions), acquirer=(acquirer and langs[0].split('_')[0]!='en'), tokenize=True, m_toker=toker).float()
             else:

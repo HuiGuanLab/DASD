@@ -414,14 +414,14 @@ class Transformer(nn.Module):
                 ("gelu1", QuickGELU()),
                 # ("c_proj2", nn.Linear(256, 512)),
             ]))    
-    def forward(self, x: torch.Tensor, context_length=77, return_all_layers=False, acquirer=False, lang=None,zi_bool=None,mu=None, logsigma=None,latent_semantics=None,inputlayers=12,text_visual=None):
+    def forward(self, x: torch.Tensor, context_length=77, return_all_layers=False, acquirer=False, lang=None,zi_bool=None,sr=None, sa=None,latent_semantics=None,inputlayers=12,text_visual=None):
         hiddens = [x]
         for index, layer in enumerate(self.resblocks):
             if index > inputlayers:
                 return x
             if acquirer:
                 if zi_bool == None:
-                    local_info = torch.cat((mu, logsigma),dim=-1)
+                    local_info = torch.cat((sr, sa),dim=-1)
                     latent_semantics = self.zi_adapter_student(local_info)
                 x = layer(x, acquirer, lang, latent_semantics = latent_semantics, zi_bool=zi_bool,text_visual = text_visual)
             else:
@@ -573,8 +573,6 @@ class CLIP(nn.Module):
                 mbert_ckpt = torch.load('pretrained_model/bert-base-multilingual-cased/pytorch_model.bin')
                 print('load mbert pretrained word embedding...')
                 self.multilingual_embedding.weight.data = mbert_ckpt['bert.embeddings.word_embeddings.weight']
-                # if self.stage == "NLT":
-                    # self.multilingual_embedding_musigma.weight.data = mbert_ckpt['bert.embeddings.word_embeddings.weight']
             else:
                 print('do not use mbert init embeddings')
 
@@ -645,7 +643,7 @@ class CLIP(nn.Module):
         x = torch.matmul(x, self.token_embedding.weight.t()).softmax(dim=-1) @ self.token_embedding.weight
         return x
 
-    def encode_text(self, text, layers=None, acquirer=False, tokenize=False, mul_toker=None, lang=None, device='cuda',mu=None,style_sigma=None,zi_bool=False,src_feats=None,istrain=False):
+    def encode_text(self, text, layers=None, acquirer=False, tokenize=False, mul_toker=None, lang=None, device='cuda',sr=None,sa=None,zi_bool=False,src_feats=None,istrain=False):
 
         context_length = self.context_length
         text_visual = text
@@ -678,7 +676,7 @@ class CLIP(nn.Module):
         if layers == None:
             if not zi_bool:
                 x = x.permute(1, 0, 2)  # NLD -> LND
-                x = self.transformer(x, acquirer=acquirer, lang=lang, context_length=context_length,mu=mu, logsigma=style_sigma , text_visual = text_visual)
+                x = self.transformer(x, acquirer=acquirer, lang=lang, context_length=context_length,sr=sr, sa=sa , text_visual = text_visual)
                 x = x.permute(1, 0, 2)  # LND -> NLD
                 x = self.ln_final(x).type(self.dtype)
                 if acquirer and tokenize and (mul_toker is None):
@@ -687,14 +685,14 @@ class CLIP(nn.Module):
                     x = x[torch.arange(x.shape[0]), text.argmax(dim=-1)] @ self.text_projection
                 return x
             else:
-                mu = self.transformer(x_mu.permute(1, 0, 2), acquirer=acquirer, lang=lang, zi_bool='mu',inputlayers = 1, text_visual=text_visual).permute(1, 0, 2)
-                logvar = self.transformer(x_sigma.permute(1, 0, 2), acquirer=acquirer, lang=lang, zi_bool='sigma',inputlayers = 1,text_visual = text_visual).permute(1, 0, 2)
+                sr = self.transformer(x_mu.permute(1, 0, 2), acquirer=acquirer, lang=lang, zi_bool='mu',inputlayers = 1, text_visual=text_visual).permute(1, 0, 2)
+                sa = self.transformer(x_sigma.permute(1, 0, 2), acquirer=acquirer, lang=lang, zi_bool='sigma',inputlayers = 1,text_visual = text_visual).permute(1, 0, 2)
 
-                mu = self.ln_mu(mu).type(self.dtype)
-                logvar = self.ln_sigma(logvar).type(self.dtype)
+                sr = self.ln_mu(sr).type(self.dtype)
+                sa = self.ln_sigma(sa).type(self.dtype)
 
-                mu = mu[torch.arange(mu.shape[0]), (text==102).nonzero()[:,1]] @ self.mu_projection
-                logvar = logvar[torch.arange(logvar.shape[0]), (text==102).nonzero()[:,1]] @ self.sigma_projection
+                sr = sr[torch.arange(sr.shape[0]), (text==102).nonzero()[:,1]] @ self.mu_projection
+                sa = sa[torch.arange(sa.shape[0]), (text==102).nonzero()[:,1]] @ self.sigma_projection
 
                 # logvar = F.avg_pool1d(logvar.permute(0, 2, 1), logvar.size(1)).squeeze(2)
 
@@ -703,15 +701,15 @@ class CLIP(nn.Module):
                     real_idx = 1
                     fake_idx = 0
                     # update discriminator
-                    match_input = torch.cat((logvar, torch.flip(src_feats, dims=[0])), -1)
-                    unmatch_input = torch.cat((logvar,src_feats), -1)                             #torch.flip(logvar, dims=[0]))
+                    match_input = torch.cat((sa, torch.flip(src_feats, dims=[0])), -1)
+                    unmatch_input = torch.cat((sa,src_feats), -1)                             #torch.flip(logvar, dims=[0]))
                     real_loss, fake_loss, real_acc, fake_acc = self.AdvAgent.update(match_input.detach(),
                                                                 unmatch_input.detach(), real_idx, fake_idx)
                     # print(f"real_acc:{real_acc}, fake_acc:{fake_acc}, sum:{real_acc+fake_acc}")
                     adv_loss = self.AdvAgent.gen_loss(match_input, unmatch_input, real_idx, fake_idx)
-                    return mu, logvar, adv_loss , src_feats
+                    return sr, sa, adv_loss , src_feats
                 else:
-                    return mu, logvar
+                    return sr, sa
         else:
             x = x.permute(1, 0, 2)  # NLD -> LND
             xes = self.transformer(x, return_all_layers=True, acquirer=acquirer)
