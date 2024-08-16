@@ -1,0 +1,22 @@
+{
+    "config": null,
+    "finetune": true,
+    "output_dir": "expr/vitb32/finetune-en-m30k",
+    "data_path":"/dataset",
+    "batch_size": 128,
+    "n_workers": 4,
+    "lr": 3e-06,
+    "epochs": 5,
+    "seed": 42,
+    "optim": "BertAdam",
+    "mse": false,
+    "nce": false,
+    "itm_nce": false,
+    "img_type": "coco",
+    "val_dataset": "coco",
+    "eval_epoch": 1,
+    "eval_step": -1,
+    "clip_ckpt": "expr/pretrained_model/clip/ViT-B-16.pt",
+    "langs": "en,en",
+    "fp16": true
+}
