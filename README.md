@@ -14,7 +14,7 @@ mkdir pretrained_model
 
 ## Data preparation
 If you do not want the dataset and code to be placed together, please modify the 'datapath' parameter in the config file.
-Download [annotations](https://drive.google.com/file/d/1LWp6RVAXUjHvljB0xUDgIg56jQRzPHcC/view?usp=sharing) and unzip it to `./dataset/`
+Download [annotations](https://drive.google.com/file/d/1LWp6RVAXUjHvljB0xUDgIg56jQRzPHcC/view?usp=sharing)
 
 **Conceptual Caption images** can be crawled [here](https://ai.google.com/research/ConceptualCaptions/download). After crawled from the web, place all images under `dataset/ConceptualCaption/images`
 
