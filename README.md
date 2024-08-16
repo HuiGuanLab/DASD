@@ -11,12 +11,6 @@ The pretrained models (CLIP & M-BERT, for initialization) can be downloaded [her
 unzip pretrained_model.zip
 ```
 
-## Config & Checkpoint
-
-Detail configuration files and checkpoints can be found [here](https://drive.google.com/file/d/1vUhJYAXrtzXtScG142zB6Id5GSt0uo0D/view?usp=sharing)
-```
-unzip expr.zip
-```
 
 ## Data preparation
 
