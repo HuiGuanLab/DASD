@@ -209,7 +209,6 @@ class Acquirer(nn.Module):
             return x
         else:
             if zi_bool == None:
-                #把zi插入到mlp中间
                 output_specific = self.mlp_beforez(x)
                 output_specific = torch.matmul(output_specific.permute(1,0,2), zi)
                 output_specific = self.mlp_afterz(output_specific.permute(1,0,2))
