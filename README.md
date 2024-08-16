@@ -8,7 +8,7 @@ opencv-python
 ## Pretrained models
 The pretrained models (CLIP & M-BERT, for initialization) can be downloaded [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing)
 ```
-unzip pretrained_model.zip
+mkdir pretrained_model
 ```
 
 
