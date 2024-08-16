@@ -1,4 +1,4 @@
-# Dynamic-Adapter-with-Semantics-Disentangling-for-Cross-lingual-Cross-modal-Retrieval
+ # Dynamic-Adapter-with-Semantics-Disentangling-for-Cross-lingual-Cross-modal-Retrieval
 # Requirments
 ```
 torch >= 1.7.1
@@ -53,38 +53,9 @@ bash train.sh  expr/vitb32/NLT/config.json 0
 # LE stage:
 bash train.sh  expr/vitb32/LE/config.json 0
 ```
-## Finetune on En (m30k)
+## Cross-lingual Finetune (m30k)
 ```
 bash train.sh \
-    expr/vitb32/finetune-en-m30k/config.json 0
-```
-## Finetune on all (m30k)
-```
-bash train.sh \
-    expr/vitb32/finetune-all-m30k/config.json 0
-```
-## Evaluate on zero-shot:
-```
-bash inference.sh \
-    expr/vitb32/LE/pytorch_model.bin.1 \
-    expr/vitb32/LE/pytorch_model.bin.1 \
-    m30k+coco \
-    expr/vitb32/LE/eval_m30k+coco
-```
-## Evaluate finetune-on-en
-```
-bash inference.sh \
-    expr/vitb32/finetune-en-m30k/pytorch_model.bin.4 \
-    expr/vitb32/LE/pytorch_model.bin.1 \
-    m30k \
-    expr/vitb32/finetune-en-m30k/eval_m30k
+    expr/vitb32/Cross-lingual_Finetune/config.json 0
 ```
 
-## Evaluate finetune-on-all
-```
-bash inference.sh \
-    expr/vitb32/finetune-en-m30k/pytorch_model.bin.4 \
-    expr/vitb32/finetune-all-m30k/pytorch_model.bin.10000 \
-    m30k \
-    expr/vitb32/finetune-all-m30k/eval_m30k
-```
