@@ -266,7 +266,7 @@ def main(args):
     set_seed(args)
 
     writer = SummaryWriter(log_dir=args.output_dir)
-    logger = get_logger(filename=args.output_dir+'/0731.txt')
+    logger = get_logger(filename=args.output_dir+'/log.txt')
     logger.info('Config:')
     logger.info(json.dumps(args.__dict__, indent=1, ensure_ascii=False))
 
