@@ -44,7 +44,7 @@ bash train.sh  expr/vitb32/NLT/config.json 0
 # LE stage:
 bash train.sh  expr/vitb32/LE/config.json 0
 ```
-## Cross-lingual Finetune (m30k)
+## Cross-lingual Finetune (m30k or MSCOCO)
 ```
 bash train.sh \
     expr/vitb32/Cross-lingual_Finetune/config.json 0
