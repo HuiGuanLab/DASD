@@ -1,0 +1,62 @@
+{
+    "train":{
+        "anno_file":[
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//MSCOCO/annotation/ref_captions.json"
+        ],
+        "feature":[
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//MSCOCO/images"
+        ],
+        "name_file":[
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//MSCOCO/public_split/trn_names.npy"
+        ],
+        "langs": [
+            "en"
+        ]
+    },
+    "val":{
+        "anno_file":[
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task2/annotation/val_en.json",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task2/annotation/val_de.json",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task1/annotation/val_fr.json",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task1/annotation/val_cs.json"
+        ],
+        "feature":[
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/flickr30k_images",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/flickr30k_images",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/flickr30k_images",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/flickr30k_images"
+        ],
+        "name_file":[
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task2/public_split/val.npy",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task2/public_split/val.npy",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task1/public_split/val.npy",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task1/public_split/val.npy"
+        ],
+        "langs": [
+            "en","de", "fr", "cs"
+        ]
+    },
+    "test":{
+        "anno_file":[
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task2/annotation/test_2016_en.json",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task2/annotation/test_2016_de.json",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task1/annotation/test_2016_flickr_fr.json",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task1/annotation/test_2016_flickr_cs.json"
+        ],
+        "feature":[
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/flickr30k_images",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/flickr30k_images",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/flickr30k_images",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/flickr30k_images"
+        ],
+        "name_file":[
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task2/public_split/test_2016.npy",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task2/public_split/test_2016.npy",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task1/public_split/test_2016_flickr.npy",
+            "/disk/dzy/VisualSearch/MLA_dataset/dataset//Multi30k/task1/public_split/test_2016_flickr.npy"
+        ],
+        "langs": [
+            "en","de", "fr", "cs"
+        ]
+    }
+}
