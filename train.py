@@ -420,7 +420,6 @@ def main(args):
             path_dict = json.load(open(os.path.join(args.data_path,'Multi30k/multi30k_4lang_path.json')))
         elif args.val_dataset == 'coco':
             path_dict = json.load(open(os.path.join(args.data_path,'MSCOCO/COCO_en_split0_path.json')))
-            #默认是30k+coco
         elif args.val_dataset == 'm30k+coco':
             path_dict_m30k = json.load(open(os.path.join(args.data_path,'Multi30k/multi30k_4lang_path.json')))
             path_dict_coco = json.load(open(os.path.join(args.data_path,'MSCOCO/COCO_en_split0_path.json')))
