@@ -58,7 +58,7 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 ## Train
 **Under the Cross-lingual Finetuning Setting:**
 ```
-# Finetune on DTD English data (m30k or MSCOCO)
+# Finetune on DTD English data (Multi30k or MSCOCO)
 bash train.sh \
     expr/vitb32/Cross-lingual_Finetune/config.json 0
 # For cross-lingual alignment:
