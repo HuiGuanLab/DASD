@@ -1,6 +1,6 @@
 {
 "config": null,
-"output_dir": "expr/vitb32/NLT",
+"output_dir": "expr/vitb32/CLA",
 "batch_size": 128,
 "data_path":"dataset",
 "n_workers": 4,

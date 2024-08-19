@@ -1,7 +1,7 @@
 {
     "config": null,
     "finetune": true,
-    "output_dir": "expr/vitb32/finetune-en-m30k",
+    "output_dir": "expr/vitb32/Cross-lingual_Finetune",
     "data_path":"/dataset",
     "batch_size": 128,
     "n_workers": 4,
