@@ -31,7 +31,7 @@ unzip dataset.zip
 ```
 **Conceptual Caption images** can be crawled [here](https://ai.google.com/research/ConceptualCaptions/download). After crawled from the web, place all images under `dataset/ConceptualCaption/images`.
 
-CC300K are used to train the released models. This subset can be found here `dataset/ConceptualCaption/cc300k.json`.
+**CC300K**  are also used to train the released models. This subset can be found here `dataset/ConceptualCaption/cc300k.json`.
 
 **Flickr30K images** can be [requested here](https://forms.illinois.edu/sec/229675). Untar it to `dataset/Multi30k`.
 ```
