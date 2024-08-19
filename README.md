@@ -70,13 +70,13 @@ bash train.sh  expr/vitb32/CMA/config.json 0
 **Under the Zero-shot Setting：**
 ```
 # For cross-lingual alignment:
-bash train.sh  expr/vitb32/NLT/config.json 0
+bash train.sh  expr/vitb32/CLA/config.json 0
 # For cross-modal alignment:
-bash train.sh  expr/vitb32/LE/config.json 0
+bash train.sh  expr/vitb32/CMA/config.json 0
 ```
 ## Evaluation
 Under both settings, you can perform model evaluation after specifying the file path to the trained model in the config file:
 ```
-bash inference.sh  expr/vitb32/LE/config.json 0
+bash inference.sh  expr/vitb32/CMA/config.json 0
 ```
 We release some checkpoints trained on Multi30k and MSCOCO, which can be obtained [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing).
