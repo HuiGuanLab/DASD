@@ -4,7 +4,7 @@
     "batch_size": 128,
     "data_path":"dataset",
     "n_workers": 4,
-    "lr": 5e-06,
+    "lr": 6e-06,
     "epochs": 1,
     "seed": 42,
     "optim": "BertAdam",
