@@ -7,6 +7,7 @@ This is the implementation for the paper "Dynamic Adapter with Semantics Disenta
 * [Requirments](#Requirments)
 * [Pretrained models used in DASD](#Pretrained-models-used-in-our-DASD)
 * [Datasets](#Datasets)
+* [CCR settings](#CCR-settings)
 * [Training](#Training)
 * [Evaluation](#Evaluation)
 # Requirments
@@ -50,7 +51,7 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/val2014.zip
 unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip 
 ```
 
-## CCR settings:
+## CCR settings
 **We conduct experiments under two CCR settings:**
 
 (1) **Cross-lingual Finetune**: we first train models using English data in Downstream Task Dataset (DTD) and then further finetune models with target-language data produced by MT tools. Finally, models are tested on DTD target-language datasets.
