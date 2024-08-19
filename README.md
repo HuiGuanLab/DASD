@@ -50,7 +50,7 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 ## CCR settings:
 **We conduct experiments under two CCR settings:**
 
-(1) **Cross-lingual Finetune**: we first train models using English data in DTD and then further finetune models with target-language data produced by MT tools. Finally, models are tested on DTD target-language datasets.
+(1) **Cross-lingual Finetune**: we first train models using English data in Downstream Task Dataset (DTD) and then further finetune models with target-language data produced by MT tools. Finally, models are tested on DTD target-language datasets.
 
 (2) **Zero-shot**: models are trained on commonly-used datasets~(e.g., CC300K) and then directly evaluated on DTD without any DTD finetuning.
 
@@ -58,11 +58,16 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 ## Train
 **Under the Cross-lingual Finetuning Setting:**
 ```
-# Finetune on Downstream Task Datasets English data (m30k or MSCOCO)
+# Finetune on DTD English data (m30k or MSCOCO)
 bash train.sh \
     expr/vitb32/Cross-lingual_Finetune/config.json 0
+# For cross-lingual alignment:
+bash train.sh  expr/vitb32/NLT/config.json 0
+# For cross-modal alignment:
+bash train.sh  expr/vitb32/LE/config.json 0
 ```
-**Train on target-languages**
+
+**Under the Zero-shot Setting：**
 ```
 # For cross-lingual alignment:
 bash train.sh  expr/vitb32/NLT/config.json 0
