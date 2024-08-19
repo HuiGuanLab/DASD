@@ -62,9 +62,9 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 bash train.sh \
     expr/vitb32/Cross-lingual_Finetune/config.json 0
 # For cross-lingual alignment:
-bash train.sh  expr/vitb32/NLT/config.json 0
+bash train.sh  expr/vitb32/CLA/config.json 0
 # For cross-modal alignment:
-bash train.sh  expr/vitb32/LE/config.json 0
+bash train.sh  expr/vitb32/CMA/config.json 0
 ```
 
 **Under the Zero-shot Setting：**
