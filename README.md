@@ -5,7 +5,7 @@ This is the implementation for the paper "Dynamic Adapter with Semantics Disenta
  
  ## Table of Contents
 * [Requirments](#Requirments)
-* [Pretrained Models used in DASD](#Pretrained-models)
+* [Pretrained Models used in DASD](#Pretrained-models-used-in-our-DASD)
 * [Datasets](#Datasets)
 * [Train](#Train)
 * [Evaluation](#Evaluation)
