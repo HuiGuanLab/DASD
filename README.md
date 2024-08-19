@@ -75,7 +75,7 @@ bash train.sh  expr/vitb32/NLT/config.json 0
 bash train.sh  expr/vitb32/LE/config.json 0
 ```
 ## Evaluation
-Specify the path to the best model in the config file.
+Under both settings, you can perform model evaluation after specifying the file path to the trained model in the config file:
 ```
 bash inference.sh  expr/vitb32/LE/config.json 0
 ```
