@@ -25,7 +25,7 @@ unzip pretrained_model.zip
 ## Datasets
 If you do not want the dataset and code to be placed together, please modify the 'datapath' parameter in the configuration file.
 
-Download [annotations](https://drive.google.com/file/d/1LWp6RVAXUjHvljB0xUDgIg56jQRzPHcC/view?usp=sharing) and unzip it to `./dataset/`
+Download [captions](https://drive.google.com/file/d/1LWp6RVAXUjHvljB0xUDgIg56jQRzPHcC/view?usp=sharing) used in our experiments and unzip it to `./dataset/`:
 ```
 unzip dataset.zip
 ```
