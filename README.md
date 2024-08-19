@@ -75,20 +75,5 @@ bash train.sh  expr/vitb32/NLT/config.json 0
 bash train.sh  expr/vitb32/LE/config.json 0
 ```
 ## Evaluation
-**Evaluate on zero-shot**:
-```
-bash inference.sh \
-    expr/vitb32/LE/pytorch_model.bin.1 \
-    expr/vitb32/LE/pytorch_model.bin.1 \
-    m30k+coco \
-    expr/vitb32/LE/eval_m30k+coco
-```
-**Evaluate finetune-on-en**:
-```
-bash inference.sh \
-    expr/vitb32/finetune-en-m30k/pytorch_model.bin.4 \
-    expr/vitb32/LE/pytorch_model.bin.1 \
-    m30k \
-    expr/vitb32/finetune-en-m30k/eval_m30k
-```
+
 We release some checkpoints trained on Multi30k and MSCOCO, which can be obtained [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing).
