@@ -22,7 +22,7 @@
     "new_embed": true,
     "iter": true,
     "m_acquirer": true,
-    "max_step": 10000,
+    "max_step": 7000,
     "fp16": true,
     "stage": "LE",
     "temp": 0.07
