@@ -48,16 +48,16 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 ```
 
 ## Train
-**Finetune on DTD (m30k or MSCOCO)**
+**Finetune on Downstream Task Datasets English data (m30k or MSCOCO)**
 ```
 bash train.sh \
     expr/vitb32/Cross-lingual_Finetune/config.json 0
 ```
-**Train on target-language**
+**Train on target-languages**
 ```
-# NLT stage
+# For cross-lingual alignment:
 bash train.sh  expr/vitb32/NLT/config.json 0
-# LE stage:
+# For cross-modal alignment:
 bash train.sh  expr/vitb32/LE/config.json 0
 ```
 ## Evaluation
