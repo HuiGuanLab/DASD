@@ -15,7 +15,7 @@
 "acquirer_hidden": 256,
 "eval_epoch": 1,
 "eval_step": 3000,
-"clip_ckpt": "expr/vitb32/finetune-en-m30k/models//pytorch_model.bin.5", 
+"clip_ckpt": "expr/vitb32/Cross-lingual_Finetune/models//pytorch_model.bin.5", 
 "langs": "ja",
 "eval_langs": "ja",
 "new_embed": true,

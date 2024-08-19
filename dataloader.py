@@ -698,59 +698,7 @@ def collate_parallel_text(data, args):
 
     text_data_all = text_data, text_data_zh, text_data_trans2zh, text_data_trans2en, text_data_mask, text_data_zh_mask
     return text_data_all, idxs, cap_ids
-def get_pair_dataloader(args, cap_file, cap_file_zh, cap_file_trans2zh, cap_file_trans2en, batch_size, lang_type=None):
-    dset = TxtDataSet4DualEncoding_translation2019(args, cap_file, cap_file_zh, cap_file_trans2zh, cap_file_trans2en, lang_type)            
-    data_loader = torch.utils.data.DataLoader(dataset=dset,
-                                              batch_size=batch_size,     
-                                              shuffle=True,
-                                              pin_memory=True,
-                                              num_workers=args.n_workers,
-                                              drop_last = True
-                                            #   collate_fn=lambda x: collate_parallel_text(x, args)
-                                            )
-    
-    return dset, IterLoader(data_loader)
 
-def get_pair_dataloader2(args, cap_file, cap_file_zh, batch_size, lang_type=None):
-    dataset = TxtDataSet4DualEncoding_translation2019_2(args, cap_file, cap_file_zh ,lang_type)      
-    data_loader = torch.utils.data.DataLoader(dataset=dataset,
-                                              batch_size=batch_size,     
-                                              shuffle=True,
-                                              pin_memory=True,
-                                              num_workers=args.n_workers,
-                                              drop_last = True
-                                            #   collate_fn=lambda x: collate_parallel_text(x, args)
-                                            )
-    
-    # return dataset, IterLoader(data_loader)
-    return dataset, data_loader
-#多加一列算zi
-def get_pair_dataloader3(args, cap_file, cap_file_zh, filter_trans_zh, batch_size, lang_type=None):
-    dataset = TxtDataSet4DualEncoding_translate(args, cap_file, cap_file_zh ,filter_trans_zh,lang_type)      
-    data_loader = torch.utils.data.DataLoader(dataset=dataset,
-                                              batch_size=batch_size,     
-                                              shuffle=True,
-                                              pin_memory=True,
-                                              num_workers=args.n_workers,
-                                              drop_last = True
-                                            #   collate_fn=lambda x: collate_parallel_text(x, args)
-                                            )
-    
-    # return dataset, IterLoader(data_loader)
-    return dataset, data_loader
-def get_pair_dataloader4(args, cap_file, batch_size, lang_type=None):
-    dataset = TxtDataSet4DualEncoding_300k_translate(args, cap_file,lang_type)      
-    data_loader = torch.utils.data.DataLoader(dataset=dataset,
-                                              batch_size=batch_size,     
-                                              shuffle=True,
-                                              pin_memory=True,
-                                              num_workers=args.n_workers,
-                                              drop_last = True
-                                            #   collate_fn=lambda x: collate_parallel_text(x, args)
-                                            )
-    
-    # return dataset, IterLoader(data_loader)
-    return dataset, data_loader
 
 
 def get_textloader(args, paths, toker, max_len):

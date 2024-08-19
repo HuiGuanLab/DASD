@@ -16,7 +16,7 @@
     "acquirer_hidden": 256,
     "eval_epoch": 1,
     "eval_step": 500,
-    "clip_ckpt": "expr/vitb32/NLT/models//pytorch_model.bin.18000",
+    "clip_ckpt": "expr/vitb32/CLA/models//pytorch_model.bin.18000",
     "langs": "ja",
     "eval_langs": "ja",
     "new_embed": true,

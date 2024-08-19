@@ -6,7 +6,6 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from torch import nn
-from prompt import PROMPTEmbedding
 
 import transformers
 
@@ -176,7 +175,7 @@ class Acquirer(nn.Module):
         self.skip = skip
         if not self.skip:
 
-            self.mlp_mu = nn.Sequential(
+            self.mlp_sr = nn.Sequential(
                     OrderedDict([
                     ("c_fc", nn.Linear(d_model, d_hidden)),
                     ("relu", nn.ReLU()),
@@ -184,7 +183,7 @@ class Acquirer(nn.Module):
                 ])
             )
 
-            self.mlp_sigma = nn.Sequential(
+            self.mlp_sa = nn.Sequential(
                     OrderedDict([
                     ("c_fc", nn.Linear(d_model, d_hidden)),
                     ("relu", nn.ReLU()),
@@ -214,13 +213,13 @@ class Acquirer(nn.Module):
                 output_specific = self.mlp_afterz(output_specific.permute(1,0,2))
                 output = x + output_specific 
 
-            elif zi_bool == 'mu':   
-                mu = self.mlp_mu(x)
-                output = x + mu
+            elif zi_bool == 'sr':   
+                sr = self.mlp_sr(x)
+                output = x + sr
                 
-            elif zi_bool=='sigma':
-                sigma = self.mlp_sigma(x)
-                output = x + sigma  
+            elif zi_bool=='sa':
+                sa = self.mlp_sa(x)
+                output = x + sa  
         return output
     
 
@@ -691,9 +690,8 @@ class CLIP(nn.Module):
                 sa = self.ln_sigma(sa).type(self.dtype)
 
                 sr = sr[torch.arange(sr.shape[0]), (text==102).nonzero()[:,1]] @ self.mu_projection
-                sa = sa[torch.arange(sa.shape[0]), (text==102).nonzero()[:,1]] @ self.sigma_projection
 
-                # logvar = F.avg_pool1d(logvar.permute(0, 2, 1), logvar.size(1)).squeeze(2)
+                sa = F.avg_pool1d(sa.permute(0, 2, 1), sa.size(1)).squeeze(2)
 
                 if istrain:
                     adv_loss = 0
