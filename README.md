@@ -1,5 +1,5 @@
  # Dynamic-Adapter-with-Semantics-Disentangling-for-Cross-lingual-Cross-modal-Retrieval
- This is implementation for the paper "Temporal Sentence Grounding with Relevance Feedback in Videos" 
+ This is implementation for the paper "Dynamic Adapter with Semantics Disentangling for Cross lingual Cross modal Retrieval" 
 ![overview](model.pdf)
  ## Table of Contents
 * [Requirments](#Requirments)
