@@ -488,7 +488,7 @@ class CLIP(nn.Module):
                  langs=None,
                  skip=False,
                  init_mbert_embedding=True,
-                 stage='NLT'
+                 stage='CLA'
                  ):
         super().__init__()
 
@@ -769,7 +769,7 @@ def convert_weights(model: nn.Module):
     model.apply(_convert_weights_to_fp16)
 
 
-def build_model(state_dict: dict, acquirer=False, d_acquirer_hidden=256, m_acquirer=False, langs=None, skip=False, init_mbert_embedding=True,stage='NLT'):
+def build_model(state_dict: dict, acquirer=False, d_acquirer_hidden=256, m_acquirer=False, langs=None, skip=False, init_mbert_embedding=True,stage='CLA'):
     vit = "visual.proj" in state_dict
 
     if vit:
