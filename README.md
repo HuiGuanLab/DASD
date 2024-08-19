@@ -92,4 +92,4 @@ bash inference.sh  expr/vitb32/CMA/config.json 0
 ```
 You can specify the test dataset and trained model in the corresponding configuration file (config.json).
 
-We release some checkpoints trained on Multi30k and MSCOCO, which can be obtained [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing).
+We release some checkpoints trained on Multi30k and MSCOCO, which can be obtained [here](https://drive.google.com/file/d/1oDkX7-4enhU83fjkHkP2R7pwEG9cRKpH/view?usp=sharing).
