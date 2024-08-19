@@ -92,13 +92,13 @@ class PairTextDataset(Dataset):
     
 
 class ImageTextDataset(Dataset):
-    def __init__(self, names, json_file, image_dir, preprocess, toker=None, sentence_transformer=False, return_type='tuple',istrain=True,stage ="LE"):
+    def __init__(self, names, json_file, image_dir, preprocess, toker=None, sentence_transformer=False, return_type='tuple',istrain=True,stage ="CMA"):
         self.names = np.load(names)
         self.data_dict = json.load(open(json_file, 'r', encoding='utf-8'))
         self.preprocess = preprocess
         self.toker = toker
         if self.toker ==  None:
-        self.en_data_dict = json.load(open('dataset/ref_captions.json', 'r', encoding='utf-8'))
+            self.en_data_dict = json.load(open('dataset/ref_captions.json', 'r', encoding='utf-8'))
         
         self.return_type = return_type
         self.imgpath2imgid = {}
@@ -159,7 +159,7 @@ class ImageTextDataset(Dataset):
             return image_path, image_path, caption
         if not self.istrain:
             img = self.preprocess(Image.open(image_path))
-        elif self.stage == "LE":
+        elif self.stage == "CMA":
             img = self.preprocess(Image.open(image_path))
         # import pdb;pdb.set_trace()
         if self.toker:
@@ -191,7 +191,7 @@ class ImageTextDataset(Dataset):
             
             
 def create_tokenizer():
-    model_name_or_path = '/pretrained_model/bert-base-multilingual-cased'
+    model_name_or_path = './pretrained_model/bert-base-multilingual-cased'
     do_lower_case = True
     cache_dir = 'data/cache_dir'
     tokenizer_class = BertTokenizer
@@ -220,8 +220,8 @@ class MultilingualImageTextDataset(Dataset):
             self.en2zh = json.load(open(en2zh_path, 'r', encoding='utf-8'))
         not_found = set()
         self.id2path = {}
-        #gai
-        all_image_names = set(json.load(open('/dataset/ConceptualCaption/new_existing_ids.json')))
+        #TODO please use your path
+        all_image_names = set(json.load(open('dataset/ConceptualCaption/new_existing_ids.json')))
         for name in self.names:
             img_path = os.path.join(image_dir, name)
             # if not os.path.isfile(img_path):

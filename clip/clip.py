@@ -88,7 +88,7 @@ def available_models() -> List[str]:
 
 
 def load(name: str, device: Union[str, torch.device] = "cuda" if torch.cuda.is_available() else "cpu", jit: bool = False, download_root: str = None, 
-        acquirer=False, d_acquirer_hidden=256, m_acquirer=False, langs=None, skip=False, init_mbert_embedding=True,stage='NLT'):
+        acquirer=False, d_acquirer_hidden=256, m_acquirer=False, langs=None, skip=False, init_mbert_embedding=True,stage='CMA'):
     """Load a CLIP model
 
     Parameters

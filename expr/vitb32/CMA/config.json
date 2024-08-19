@@ -24,6 +24,6 @@
     "m_acquirer": true,
     "max_step": 7000,
     "fp16": true,
-    "stage": "LE",
+    "stage": "CMA",
     "temp": 0.07
 }

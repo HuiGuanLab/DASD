@@ -169,9 +169,8 @@ def train_acquirer(args, batch, clip_model, loss_nce, loss_mse, epoch, lang=None
     loss_mu= 0.
     adv_loss = 0.
     loss_teacher = 0.
-    hisc = RbfHSIC(1)
     batch = [t.cuda() if isinstance(t, torch.Tensor) else t for t in batch]
-    if args.stage == 'NLT':
+    if args.stage == 'CLA':
 
         if len(batch) == 2:
             src_sents, trg_sents = batch
@@ -193,7 +192,7 @@ def train_acquirer(args, batch, clip_model, loss_nce, loss_mse, epoch, lang=None
         
     if args.new_embed:
         if args.m_acquirer:
-            if args.stage == 'NLT':
+            if args.stage == 'CLA':
                 gold_feats = src_feats.detach()
             else:
                 with torch.no_grad():
