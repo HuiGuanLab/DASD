@@ -11,7 +11,7 @@ This is the implementation for the paper "Dynamic Adapter with Semantics Disenta
 * [Training](#Training)
 * [Evaluation](#Evaluation)
 # Requirments
-```
+```shell script
 torch >= 1.7.1
 transformers
 opencv-python
