@@ -12,7 +12,6 @@ import argparse
 import transformers
 import numpy as np
 import torch.nn as nn
-from hsic import RbfHSIC
 from tqdm import tqdm
 from torch.utils.tensorboard import SummaryWriter
 from torch.nn.functional import normalize as norm
