@@ -7,7 +7,7 @@ This is the implementation for the paper "Dynamic Adapter with Semantics Disenta
 * [Requirments](#Requirments)
 * [Pretrained models used in DASD](#Pretrained-models-used-in-our-DASD)
 * [Datasets](#Datasets)
-* [Train](#Train)
+* [Training](#Training)
 * [Evaluation](#Evaluation)
 # Requirments
 ```
@@ -59,7 +59,7 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 
 
 
-## Train
+## Training
 **Under the Cross-lingual Finetuning Setting,**
 we train the model using the following scripits:
 ```
