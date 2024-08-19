@@ -15,7 +15,7 @@ torch >= 1.7.1
 transformers
 opencv-python
 ```
-## Pretrained Models used in DASD
+## Pretrained Models used in our DASD
 The pretrained models used in DASD (CLIP & mBERT, for initialization) can be downloaded [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing)
 ```
 unzip pretrained_model.zip
@@ -59,7 +59,7 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 
 
 ## Train
-**Under the Cross-lingual Finetuning Setting**,
+**Under the Cross-lingual Finetuning Setting,**
 we train the model using the following scripits:
 ```
 # Finetune on DTD English data:
@@ -73,7 +73,7 @@ bash train.sh  expr/vitb32/CLA/config.json 0
 bash train.sh  expr/vitb32/CMA/config.json 0
 ```
 
-**Under the Zero-shot Setting**,
+**Under the Zero-shot Setting,**
 we train the model using the following scripits:
 ```
 # For cross-lingual alignment:
