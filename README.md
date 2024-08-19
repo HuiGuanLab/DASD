@@ -61,5 +61,5 @@ bash train.sh  expr/vitb32/NLT/config.json 0
 bash train.sh  expr/vitb32/LE/config.json 0
 ```
 ## Evaluation
-We release several pretrained checkpoints.
-- DASA on Multi30K and MSCOCO:(https://drive.google.com/drive/folders/1TQyojFEEhXsDg6GSChfGrmCcoKesigI5?usp=sharing)
+We release several checkpoints.
+- DASA on Multi30K and MSCOCO can be downloaded [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing)
