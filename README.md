@@ -75,5 +75,8 @@ bash train.sh  expr/vitb32/NLT/config.json 0
 bash train.sh  expr/vitb32/LE/config.json 0
 ```
 ## Evaluation
-
+Specify the path to the best model in the config file.
+```
+bash train.sh  expr/vitb32/LE/config.json 0
+```
 We release some checkpoints trained on Multi30k and MSCOCO, which can be obtained [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing).
