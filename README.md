@@ -60,4 +60,6 @@ bash train.sh  expr/vitb32/NLT/config.json 0
 # LE stage:
 bash train.sh  expr/vitb32/LE/config.json 0
 ```
-
+## Evaluation
+We release several pretrained checkpoints.
+- DASA on Multi30K and MSCOCO:(https://drive.google.com/drive/folders/1TQyojFEEhXsDg6GSChfGrmCcoKesigI5?usp=sharing)
