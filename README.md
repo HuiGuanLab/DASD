@@ -1,10 +1,10 @@
  # Dynamic-Adapter-with-Semantics-Disentangling-for-Cross-lingual-Cross-modal-Retrieval
  ## Table of Contents
-* [Requirments](#environments)
-* [Pretrained models](#datasets)
-* [Data preparation](#preparation)
-* [Train](#training)
-* [Evaluation](#evaluation)
+* [Requirments](#Requirments)
+* [Pretrained models](#Pretrained models)
+* [Data preparation](#Data preparation)
+* [Train](#Train)
+* [Evaluation](#Evaluation)
 # Requirments
 ```
 torch >= 1.7.1
