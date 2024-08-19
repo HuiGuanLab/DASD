@@ -16,7 +16,7 @@ def get_cc(args, preprocess, is_train, langs=['en','de','fr','cs','zh','ja'], to
     return get_mit_loader(args, names, data_list, langs, image_dir, preprocess, is_train, top=top, train_en=train_en)
 
 ##gai
-def get_cc_iter(args, preprocess, is_train, langs, top=-1, train_en=False,stage='NLT'):
+def get_cc_iter(args, preprocess, is_train, langs, top=-1, train_en=False,stage='CLA'):
     file_path=args.data_path
     root_path =os.path.join(file_path,'ConceptualCaption/annotation/uc2_6langs/')
     image_dir=os.path.join(file_path,'ConceptualCaption/images/')

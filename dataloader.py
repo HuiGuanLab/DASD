@@ -176,7 +176,7 @@ class ImageTextDataset(Dataset):
                 }
         else:
             if self.return_type == 'tuple': 
-                if self.istrain and self.stage == "NLT":
+                if self.istrain and self.stage == "CLA":
                     return caption_en, caption
                 else:
                     return img, caption_en, caption
@@ -204,7 +204,7 @@ caption_tokenizer = create_tokenizer()
 
 
 class MultilingualImageTextDataset(Dataset):
-    def __init__(self, names, json_files, langs, image_dir, preprocess, top=-1, train_en=False, stage='NLT', en2zh_path=''):
+    def __init__(self, names, json_files, langs, image_dir, preprocess, top=-1, train_en=False, stage='CLA', en2zh_path=''):
         self.names = np.load(names)
         self.data_dict = {}
         self.langs = langs
@@ -253,11 +253,11 @@ class MultilingualImageTextDataset(Dataset):
         if len(self.en2zh_path) != 0:
             caption_en2zh = self.en2zh[img_id][0]
 
-        # if self.stage != 'NLT' and self.stage != 'fusion':
+        # if self.stage != 'CLA' and self.stage != 'fusion':
         # image_path = self.id2path[img_id]
         # img = self.preprocess(Image.open(image_path))
 
-        if self.stage != 'NLT':
+        if self.stage != 'CLA':
             image_path = self.id2path[img_id]
             
             img = self.preprocess(Image.open(image_path))
@@ -269,7 +269,7 @@ class MultilingualImageTextDataset(Dataset):
 
 
 
-def get_mit_loader(args, names, json_files, langs, image_dir, preprocess, is_train, top=-1, train_en=False, stage='NLT', en2zh_path=''):
+def get_mit_loader(args, names, json_files, langs, image_dir, preprocess, is_train, top=-1, train_en=False, stage='CLA', en2zh_path=''):
     dataset = MultilingualImageTextDataset(names, json_files, langs, image_dir, preprocess, top=top, train_en=train_en,stage=stage,en2zh_path=en2zh_path)
     dataloader = DataLoader(
         dataset=dataset,
