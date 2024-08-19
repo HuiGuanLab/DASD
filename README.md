@@ -1,6 +1,6 @@
  # Dynamic-Adapter-with-Semantics-Disentangling-for-Cross-lingual-Cross-modal-Retrieval
- This is implementation for the paper "Dynamic Adapter with Semantics Disentangling for Cross lingual Cross modal Retrieval" 
  ![](https://github.com/zhiyudongg/DASD/blob/main/framework.png)
+This is implementation for the paper "Dynamic Adapter with Semantics Disentangling for Cross lingual Cross modal Retrieval" 
  ## Table of Contents
 * [Requirments](#Requirments)
 * [Pretrained-models](#Pretrained-models)
