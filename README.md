@@ -47,9 +47,16 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/val2014.zip
 unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip 
 ```
 
+## CCR settings:
+ ** We conduct experiments under two CCR settings:
+(1) \textit{\textbf{Cross-lingual Finetune}}: we first train models using English data in DTD and then further finetune models with target-language data produced by MT tools. Finally, models are tested on DTD target-language datasets.
+(2) \textit{\textbf{Zero-shot}}: models are trained on commonly-used datasets~(e.g., CC300K) and then directly evaluated on DTD without any DTD finetuning.
+**
+
 ## Train
-**Finetune on Downstream Task Datasets English data (m30k or MSCOCO)**
+**Under the Cross-lingual Finetuning Setting:**
 ```
+# Finetune on Downstream Task Datasets English data (m30k or MSCOCO)
 bash train.sh \
     expr/vitb32/Cross-lingual_Finetune/config.json 0
 ```
