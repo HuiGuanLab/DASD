@@ -59,7 +59,7 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 
 
 ## Train
-**Under the Cross-lingual Finetuning Setting**
+**Under the Cross-lingual Finetuning Setting**,
 we train the model using the following scripits:
 ```
 # Finetune on DTD English data:
@@ -73,7 +73,7 @@ bash train.sh  expr/vitb32/CLA/config.json 0
 bash train.sh  expr/vitb32/CMA/config.json 0
 ```
 
-**Under the Zero-shot Setting：**
+**Under the Zero-shot Setting**,
 we train the model using the following scripits:
 ```
 # For cross-lingual alignment:
