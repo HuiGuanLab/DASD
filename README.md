@@ -1,8 +1,8 @@
  # Dynamic-Adapter-with-Semantics-Disentangling-for-Cross-lingual-Cross-modal-Retrieval
  ## Table of Contents
 * [Requirments](#Requirments)
-* [Pretrained models](#Pretrained models)
-* [Data preparation](#Data preparation)
+* [Pretrained-models](#Pretrained-models)
+* [Dataset](#Dataset)
 * [Train](#Train)
 * [Evaluation](#Evaluation)
 # Requirments
@@ -11,14 +11,14 @@ torch >= 1.7.1
 transformers
 opencv-python
 ```
-## Pretrained models
+## Pretrained-models
 The pretrained models (CLIP & M-BERT, for initialization) can be downloaded [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing)
 ```
 unzip pretrained_model.zip
 ```
 
 
-## Data preparation
+## Dataset
 If you do not want the dataset and code to be placed together, please modify the 'datapath' parameter in the config file.
 Download [annotations](https://drive.google.com/file/d/1LWp6RVAXUjHvljB0xUDgIg56jQRzPHcC/view?usp=sharing)
 ```
