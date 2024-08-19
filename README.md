@@ -78,8 +78,9 @@ bash train.sh  expr/vitb32/CMA/config.json 0
 For both settings, please specify the training dataset in the corresponding configuration file (config.json).
 
 ## Evaluation
-For both settings, please specify the test dataset and trained model in the corresponding configuration file (config.json).
+For both settings, we use the same command for evalution: 
 ```
 bash inference.sh  expr/vitb32/CMA/config.json 0
 ```
+You can specify the test dataset and trained model in the corresponding configuration file (config.json).
 We release some checkpoints trained on Multi30k and MSCOCO, which can be obtained [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing).
