@@ -13,8 +13,8 @@ torch >= 1.7.1
 transformers
 opencv-python
 ```
-## Pretrained-models
-The pretrained models (CLIP & M-BERT, for initialization) can be downloaded [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing)
+## Pretrained Models used in DASD
+The pretrained models used in DASD (CLIP & mBERT, for initialization) can be downloaded [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing)
 ```
 unzip pretrained_model.zip
 ```
@@ -59,11 +59,13 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 ## Train
 **Under the Cross-lingual Finetuning Setting:**
 ```
-# Finetune on DTD English data (Multi30k or MSCOCO)
+# Finetune on DTD English data:
 bash train.sh \
     expr/vitb32/Cross-lingual_Finetune/config.json 0
+
 # For cross-lingual alignment:
 bash train.sh  expr/vitb32/CLA/config.json 0
+
 # For cross-modal alignment:
 bash train.sh  expr/vitb32/CMA/config.json 0
 ```
@@ -72,6 +74,7 @@ bash train.sh  expr/vitb32/CMA/config.json 0
 ```
 # For cross-lingual alignment:
 bash train.sh  expr/vitb32/CLA/config.json 0
+
 # For cross-modal alignment:
 bash train.sh  expr/vitb32/CMA/config.json 0
 ```
