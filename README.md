@@ -27,7 +27,7 @@ unzip pretrained_model.zip
 If you do not want the dataset and code to be placed together, please modify the 'datapath' parameter in the configuration file.
 
 Download [captions](https://drive.google.com/file/d/1LWp6RVAXUjHvljB0xUDgIg56jQRzPHcC/view?usp=sharing) used in our experiments and unzip it to `./dataset/`:
-```
+```shell script
 unzip dataset.zip
 ```
 **Conceptual Caption images** can be crawled [here](https://ai.google.com/research/ConceptualCaptions/download). After crawled from the web, place all images under `dataset/ConceptualCaption/images`.
@@ -35,11 +35,11 @@ unzip dataset.zip
 **CC300K**  are also used to train the released models. This subset can be found here `dataset/ConceptualCaption/cc300k.json`.
 
 **Flickr30K images** can be [requested here](https://forms.illinois.edu/sec/229675). Untar it to `dataset/Multi30k`.
-```
+```shell script
 tar -xzvf flickr30k_images.tar.gz -C dataset/Multi30k
 ```
 **MSCOCO images** can be downloaded and prepared with the following scripts:
-```
+```shell script
 wget -c http://images.cocodataset.org/zips/train2014.zip
 wget -c http://images.cocodataset.org/zips/val2014.zip
 wget -c http://images.cocodataset.org/zips/test2014.zip
@@ -63,7 +63,7 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 ## Training
 **Under the Cross-lingual Finetuning Setting,**
 we train the model using the following scripits:
-```
+```shell script
 # Finetune on DTD English data:
 bash train.sh  expr/vitb32/Cross-lingual_Finetune/config.json 0
 
@@ -76,7 +76,7 @@ bash train.sh  expr/vitb32/CMA/config.json 0
 
 **Under the Zero-shot Setting,**
 we train the model using the following scripits:
-```
+```shell script
 # For cross-lingual alignment:
 bash train.sh  expr/vitb32/CLA/config.json 0
 
@@ -87,7 +87,7 @@ For both settings, please specify the training dataset in the corresponding conf
 
 ## Evaluation
 For both settings, we use the same command for evalution: 
-```
+```shell script
 bash inference.sh  expr/vitb32/CMA/config.json 0
 ```
 You can specify the test dataset and trained model in the corresponding configuration file (config.json).
