@@ -55,6 +55,7 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 (2) **Zero-shot**: models are trained on commonly-used datasets~(e.g., CC300K) and then directly evaluated on DTD without any DTD finetuning.
 
 
+
 ## Train
 **Under the Cross-lingual Finetuning Setting:**
 ```
@@ -74,8 +75,10 @@ bash train.sh  expr/vitb32/CLA/config.json 0
 # For cross-modal alignment:
 bash train.sh  expr/vitb32/CMA/config.json 0
 ```
+For both settings, please specify the training dataset in the corresponding configuration file (config.json).
+
 ## Evaluation
-Under both settings, you can perform model evaluation after specifying the file path to the trained model in the config file:
+For both settings, please specify the test dataset and trained model in the corresponding configuration file (config.json).
 ```
 bash inference.sh  expr/vitb32/CMA/config.json 0
 ```
