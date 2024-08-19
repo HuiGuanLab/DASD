@@ -65,8 +65,7 @@ unzip -d dataset/MSCOCO/images http://images.cocodataset.org/zips/test2014.zip
 we train the model using the following scripits:
 ```
 # Finetune on DTD English data:
-bash train.sh \
-    expr/vitb32/Cross-lingual_Finetune/config.json 0
+bash train.sh  expr/vitb32/Cross-lingual_Finetune/config.json 0
 
 # For cross-lingual alignment:
 bash train.sh  expr/vitb32/CLA/config.json 0
