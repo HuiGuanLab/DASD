@@ -169,6 +169,8 @@ def train_acquirer(args, batch, clip_model, loss_nce, loss_mse, epoch, lang=None
     density_loss=0.
     loss_mu= 0.
     adv_loss = 0.
+    loss_teacher = 0.
+    hisc = RbfHSIC(1)
     batch = [t.cuda() if isinstance(t, torch.Tensor) else t for t in batch]
     if args.stage == 'NLT':
 
@@ -230,6 +232,7 @@ def train_acquirer(args, batch, clip_model, loss_nce, loss_mse, epoch, lang=None
         loss2 = loss_nce(sim_matrix.T)
         loss_itm_nce = (loss1 + loss2) / 2
         
+        #蒸馏损失
         loss_distill = nn.SmoothL1Loss()
         loss_mu = loss_distill(img_feats, sr)  * 0.1
 
@@ -266,7 +269,7 @@ def main(args):
     set_seed(args)
 
     writer = SummaryWriter(log_dir=args.output_dir)
-    logger = get_logger(filename=args.output_dir+'/log.txt')
+    logger = get_logger(filename=args.output_dir+'log.txt')
     logger.info('Config:')
     logger.info(json.dumps(args.__dict__, indent=1, ensure_ascii=False))
 
@@ -420,6 +423,7 @@ def main(args):
             path_dict = json.load(open(os.path.join(args.data_path,'Multi30k/multi30k_4lang_path.json')))
         elif args.val_dataset == 'coco':
             path_dict = json.load(open(os.path.join(args.data_path,'MSCOCO/COCO_en_split0_path.json')))
+            #默认是30k+coco
         elif args.val_dataset == 'm30k+coco':
             path_dict_m30k = json.load(open(os.path.join(args.data_path,'Multi30k/multi30k_4lang_path.json')))
             path_dict_coco = json.load(open(os.path.join(args.data_path,'MSCOCO/COCO_en_split0_path.json')))
