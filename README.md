@@ -15,7 +15,7 @@ torch >= 1.7.1
 transformers
 opencv-python
 ```
-## Pretrained Models used in our DASD
+## Pretrained models used in our DASD
 The pretrained models used in DASD (CLIP & mBERT, for initialization) can be downloaded [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing)
 ```
 unzip pretrained_model.zip
