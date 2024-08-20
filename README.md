@@ -68,7 +68,7 @@ we train the model using the following scripits:
 bash train.sh  expr/vitb32/Cross-lingual_Finetune/config.json 0
 
 # For cross-lingual cross-modal alignment:
-bash CLCMA.sh
+bash CLCMA.sh 0
 ```
 
 **Under the Zero-shot Setting,**
