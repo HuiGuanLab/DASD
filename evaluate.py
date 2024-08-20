@@ -191,8 +191,6 @@ def eval_epoch(clip_model, test_dataloader, device, n_gpu, langs=['en'],
         # ----------------------------------
         sim_matrix = _run_on_single_gpu(batch_list_t, batch_list_v, batch_sequence_output_list, batch_visual_output_list)
         sim_matrix = np.concatenate(sim_matrix, axis=0)
-        with open("feature.json","a",encoding="utf-8") as f:
-            json.dump(visual_json,f,ensure_ascii=False)
     if save_matrix:
         all_image_ids = [all_image_ids[i] for i in cut_off_points_]
         os.makedirs(output_root, exist_ok=True)
