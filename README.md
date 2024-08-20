@@ -74,11 +74,8 @@ bash CLCMA.sh 0
 **Under the Zero-shot Setting,**
 we train the model using the following scripits:
 ```shell script
-# For cross-lingual alignment:
-bash train.sh  expr/vitb32/CLA/config.json 0
-
-# For cross-modal alignment:
-bash train.sh  expr/vitb32/CMA/config.json 0
+# For cross-lingual cross-modal alignment:
+bash CLCMA.sh 0
 ```
 For both settings, please specify the training dataset in the corresponding configuration file (config.json).
 
