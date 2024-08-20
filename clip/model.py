@@ -338,11 +338,6 @@ class ResidualAttentionBlock(nn.Module):
         self.ln_2 = LayerNorm(d_model)
         self.attn_mask = attn_mask
         if acquirer:
-            # self.mlp_zi= nn.Sequential(OrderedDict([
-            #     ("c_fc1", nn.Linear(512, 256)),
-            #     ("gelu1", QuickGELU()),
-            #     ("c_proj2", nn.Linear(256, 1024)),
-            # ]))
             self.mlp_zi= nn.Sequential(OrderedDict([
                 ("c_fc1", nn.Linear(512, 1024)),
             ]))
