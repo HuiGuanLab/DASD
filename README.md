@@ -17,7 +17,7 @@ transformers
 opencv-python
 ```
 ## Pretrained models used in our DASD
-The pretrained models used in DASD (CLIP & mBERT, for initialization) can be downloaded [here](https://drive.google.com/file/d/1lJU9RwuYTvEd9r9ReM9FyXRxgkxxTStx/view?usp=sharing):
+The pretrained models used in DASD (CLIP & mBERT, for initialization) can be downloaded [here](https://drive.google.com/file/d/1nBkQSopvmUSxf_B07eODe1_wD3cEjSAZ/view?usp=sharing):
 ```shell script
 unzip pretrained_model.zip
 ```
