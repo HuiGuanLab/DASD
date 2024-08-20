@@ -528,6 +528,16 @@ def main(args):
                         best_score = mAR
                         best_epoch = global_step
                         best_ckpt_path = args.output_dir+'/models/'+'/pytorch_model.bin.{}'.format(best_epoch)
+                        ###
+                        if args.stage == 'CLA':
+                            file_path = 'expr/vitb32/CMA/config.json' 
+                            new_clip_ckpt_value = best_ckpt_path
+                            with open(file_path, 'r') as file:
+                                data = json.load(file)
+                            data['clip_ckpt'] = new_clip_ckpt_value
+                            with open(file_path, 'w') as file:
+                                json.dump(data, file, indent=4)  
+                        ###
                         os.makedirs(args.output_dir+'/models/', exist_ok=True)
                         torch.save(clip_model.state_dict(), args.output_dir+'/models/'+'/pytorch_model.bin.{}'.format(best_epoch))
                     logger.info(f'Best model at: {best_ckpt_path}, mAR: {best_score}')
