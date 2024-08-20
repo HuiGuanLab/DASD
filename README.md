@@ -67,11 +67,8 @@ we train the model using the following scripits:
 # Finetune on DTD English data:
 bash train.sh  expr/vitb32/Cross-lingual_Finetune/config.json 0
 
-# For cross-lingual alignment:
-bash train.sh  expr/vitb32/CLA/config.json 0
-
-# For cross-modal alignment:
-bash train.sh  expr/vitb32/CMA/config.json 0
+# For cross-lingual cross-modal alignment:
+bash CLCMA.sh
 ```
 
 **Under the Zero-shot Setting,**
