@@ -405,7 +405,6 @@ class Transformer(nn.Module):
         self.zi_adapter_student= nn.Sequential(OrderedDict([
                 ("c_fc1", nn.Linear(1024, 512)),
                 ("gelu1", QuickGELU()),
-                # ("c_proj2", nn.Linear(256, 512)),
             ]))    
     def forward(self, x: torch.Tensor, context_length=77, return_all_layers=False, acquirer=False, lang=None,zi_bool=None,sr=None, sa=None,latent_semantics=None,inputlayers=12,text_visual=None):
         hiddens = [x]
@@ -781,9 +780,6 @@ def build_model(state_dict: dict, acquirer=False, d_acquirer_hidden=256, m_acqui
         vision_patch_size = None
         assert output_width ** 2 + 1 == state_dict["visual.attnpool.positional_embedding"].shape[0]
         image_resolution = output_width * 32
-    # with open('parameters.txt', 'w') as file:
-    #     file.write(str(state_dict))
-    # a
     embed_dim = state_dict["text_projection"].shape[1]
     context_length = state_dict["positional_embedding"].shape[0]
     vocab_size = state_dict["token_embedding.weight"].shape[0]
