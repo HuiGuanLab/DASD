@@ -550,9 +550,6 @@ class CLIP(nn.Module):
             self.multilingual_embedding = nn.Embedding(119547, 768)
             self.multilingual_embedding_linear = nn.Linear(768, 512)
 
-            # self.multilingual_embedding_musigma = nn.Embedding(119547, 768)
-            # self.multilingual_embedding_linear_mu = nn.Linear(768, 512)
-            # self.multilingual_embedding_linear_sigma = nn.Linear(768, 512)
         self.initialize_parameters()
 
 
@@ -589,11 +586,7 @@ class CLIP(nn.Module):
             nn.init.normal_(block.attn.out_proj.weight, std=proj_std)
             nn.init.normal_(block.mlp.c_fc.weight, std=fc_std)
             nn.init.normal_(block.mlp.c_proj.weight, std=proj_std)
-            # if self.acquirer:
-            #     # nn.init.normal_(block.acquirer.nlp.linear.weight, std=proj_std)
-            #     nn.init.normal_(block.acquirer.mlp.c_fc.weight, std=fc_std)
-            #     nn.init.normal_(block.mlp.c_proj.weight, std=proj_std)
-
+          
         if self.text_projection is not None:
             nn.init.normal_(self.text_projection, std=self.transformer.width ** -0.5)
 
