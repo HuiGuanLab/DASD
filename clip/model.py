@@ -534,7 +534,7 @@ class CLIP(nn.Module):
         self.text_projection = nn.Parameter(torch.empty(transformer_width, embed_dim))
         self.target_projection = nn.Parameter(torch.empty(transformer_width, embed_dim))
         self.logit_scale = nn.Parameter(torch.ones([]) * np.log(1 / 0.07))
-        self.mu_projection = nn.Parameter(torch.empty(transformer_width, embed_dim)) #TODO
+        self.sr_projection = nn.Parameter(torch.empty(transformer_width, embed_dim)) #TODO
         self.sigma_projection = nn.Parameter(torch.empty(transformer_width, embed_dim)) #TODO
         self.stage =stage
 
@@ -676,7 +676,7 @@ class CLIP(nn.Module):
                 sr = self.ln_mu(sr).type(self.dtype)
                 sa = self.ln_sigma(sa).type(self.dtype)
 
-                sr = sr[torch.arange(sr.shape[0]), (text==102).nonzero()[:,1]] @ self.mu_projection
+                sr = sr[torch.arange(sr.shape[0]), (text==102).nonzero()[:,1]] @ self.sr_projection
 
                 sa = F.avg_pool1d(sa.permute(0, 2, 1), sa.size(1)).squeeze(2)
 
