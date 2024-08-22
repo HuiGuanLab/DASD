@@ -670,8 +670,8 @@ class CLIP(nn.Module):
                     x = x[torch.arange(x.shape[0]), text.argmax(dim=-1)] @ self.text_projection
                 return x
             else:
-                sr = self.transformer(x_mu.permute(1, 0, 2), acquirer=acquirer, lang=lang, zi_bool='mu',inputlayers = 1, text_visual=text_visual).permute(1, 0, 2)
-                sa = self.transformer(x_sigma.permute(1, 0, 2), acquirer=acquirer, lang=lang, zi_bool='sigma',inputlayers = 1,text_visual = text_visual).permute(1, 0, 2)
+                sr = self.transformer(x_mu.permute(1, 0, 2), acquirer=acquirer, lang=lang, zi_bool='sr',inputlayers = 1, text_visual=text_visual).permute(1, 0, 2)
+                sa = self.transformer(x_sigma.permute(1, 0, 2), acquirer=acquirer, lang=lang, zi_bool='sa',inputlayers = 1,text_visual = text_visual).permute(1, 0, 2)
 
                 sr = self.ln_mu(sr).type(self.dtype)
                 sa = self.ln_sigma(sa).type(self.dtype)
