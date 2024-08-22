@@ -420,7 +420,6 @@ def main(args):
             path_dict = json.load(open(os.path.join(args.data_path,'Multi30k/multi30k_4lang_path.json')))
         elif args.val_dataset == 'coco':
             path_dict = json.load(open(os.path.join(args.data_path,'MSCOCO/COCO_en_split0_path.json')))
-            #默认是30k+coco
         elif args.val_dataset == 'm30k+coco':
             path_dict_m30k = json.load(open(os.path.join(args.data_path,'Multi30k/multi30k_4lang_path.json')))
             path_dict_coco = json.load(open(os.path.join(args.data_path,'MSCOCO/COCO_en_split0_path.json')))
@@ -520,7 +519,7 @@ def main(args):
                 global_step += 1
 
                 if args.eval_step > 0 and global_step % args.eval_step == 0:
-                    mAR = eval_epoch(clip_model, test_loaders, 'cuda', 1, val_langs, trg_toker, logger, is_clip=True, acquirer=True, new_embed=args.new_embed, extra_embed=args.extra_embed)
+                    mAR = eval_epoch(clip_model, val_loaders, 'cuda', 1, val_langs, trg_toker, logger, is_clip=True, acquirer=True, new_embed=args.new_embed, extra_embed=args.extra_embed)
                     torch.cuda.empty_cache()
                     clip_model.train()
                     writer.add_scalar('metrics/mAR_step', mAR, global_step=global_step)
