@@ -345,7 +345,7 @@ def main(args):
         elif args.fix_linear:
             train_names = ['acquirer', 'multilingual_embedding.']
         else:
-            train_names = ['acquirer', 'multilingual_embedding', 'multilingual_embedding_linear','mu','sigma','zi_adapter','mlp_zi','mu_projection','sigma_projection','style_encoder','AdvAgent','gate']
+            train_names = ['acquirer', 'multilingual_embedding', 'multilingual_embedding_linear','ra','sa','zi','AdvAgent']
             # train_names = ['acquirer', 'multilingual_embedding', 'multilingual_embedding_linear']
             
         logger.info(f'Trainable parameter keys:{[n for n, p in param_optimizer if any(nd in n for nd in train_names)]}')
