@@ -209,7 +209,7 @@ def train_acquirer(args, batch, clip_model, loss_nce, loss_mse, epoch, lang=None
     if args.mse:
         loss_kd = loss_mse(src_feats, trg_feats, layers=(args.kd_layers is not None and epoch < args.kd_layer_ep))
 
-        loss_distill = nn.SmoothL1Loss()
+        loss_distill = nn.L1Loss()
         loss_mu = loss_distill(sr, src_feats) * 0.1
 
         loss += loss_kd + adv_loss + loss_mu
