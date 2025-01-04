@@ -87,3 +87,17 @@ bash inference.sh  expr/vitb32/CMA/config.json 0
 You can specify the test dataset and trained model in the corresponding configuration file (config.json).
 
 We release some checkpoints trained on Multi30k and MSCOCO, which can be obtained [here](https://drive.google.com/file/d/1oDkX7-4enhU83fjkHkP2R7pwEG9cRKpH/view?usp=sharing).
+
+
+## Reference
+
+If you find the package useful, please consider citing our paper:
+
+```
+@inproceedings{Cai2025Dynamic,
+  title={Dynamic Adapter with Semantics Disentangling for Cross-lingual Cross-modal Retrieval},
+  author={Rui Cai and Zhiyu Dong and Jianfeng Dong and Xun Wang},
+  journal={Proceedings of the AAAI Conference on Artificial Intelligence},
+  year={2025}
+}
+```
